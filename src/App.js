@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import Todotable from "./components/todotable";
 
 function App() {
   const [desc, setDesc] = useState({ desc: "", date: "" });
@@ -37,24 +38,8 @@ function App() {
         ></input>
         <input type="submit" value="Add" />
       </form>
-      <table>
-        <tr>
-          <th>Date</th>
-          <th>Description</th>
-        </tr>
-
-        <tbody>
-          {todos.map((todo, index) => (
-            <tr key={index}>
-              <td>{todo.date}</td>
-              <td>{todo.desc}</td>
-              <td>
-                <button onClick={() => deleteClicked(index)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Todotable todos={todos} delete={deleteClicked} />
+      
     </div>
   );
 }
